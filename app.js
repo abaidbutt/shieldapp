@@ -22,8 +22,8 @@ const twilio = require("twilio");
 const accountSid = "AC38eb72820f21094ce79450c0d19df8c0"; // Your Account SID from www.twilio.com/console
 const authToken = "88a807f3213314804e674f7fea4e19cb"; // Your Auth Token from www.twilio.com/console
 const s3 = new AWS.S3({
-  accessKeyId: ID,
-  secretAccessKey: SECRET,
+  accessKeyId: process.env.AWS_ACCESS_KEY,
+  secretAccessKey: process.env.AWS_ACCESS_SECRET,
 });
 const BUCKET_NAME = "test-bucket";
 
@@ -42,6 +42,9 @@ app.use("/api/service", serviceRoutes);
 app.use("/api/providerService", providerServiceRoutes);
 app.use("/api/employee", employeeRoutes);
 app.use("/api/provider", providerRoutes);
+app.use("/", (req, res)=>{
+  res.send('hello working proper')
+})
 app.use("/api/forgot", async (req, res) => {
   try {
     const { name, mobileNumber } = req.body;
