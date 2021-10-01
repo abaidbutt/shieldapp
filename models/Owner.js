@@ -15,7 +15,7 @@ const ownerSchema = mongoose.Schema(
       required: true,
     },
     mobileNumber: {
-      type: Number,
+      type: String,
       require: true,
     },
     password: {

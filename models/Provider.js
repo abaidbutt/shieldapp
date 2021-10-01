@@ -15,12 +15,11 @@ const ProviderSchema = mongoose.Schema(
       ref: "ProviderService",
     },
     mobileNumber: {
-      type: Number,
+      type: String,
       require: true,
     },
     mobileNumberalt: {
-      type: Number,
-      require: false,
+      type: String,
     },
     password: {
       type: String,
@@ -44,19 +43,15 @@ const ProviderSchema = mongoose.Schema(
     },
     temp_address: {
       type: String,
-      // required: false,
     },
     temp_country: {
       type: String,
-      // required: false,
     },
     temp_state: {
       type: String,
-      // required: false,
     },
     temp_city: {
       type: String,
-      // required: false,
     },
     a_adharNumber: {
       type: Number,

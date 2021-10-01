@@ -8,7 +8,4 @@ const {
 
 router.post("/", createProviderService);
 router.get("/", getProviderService);
-// router.get('/',  getRoles);
-// router.put('/:roleId', editRole);
-
 module.exports = router;
