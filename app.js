@@ -19,8 +19,8 @@ const employeeRoutes = require("./routes/employee");
 const providerRoutes = require("./routes/provider");
 const bcrypt = require("bcryptjs");
 const twilio = require("twilio");
-const accountSid = "AC38eb72820f21094ce79450c0d19df8c0"; // Your Account SID from www.twilio.com/console
-const authToken = "88a807f3213314804e674f7fea4e19cb"; // Your Auth Token from www.twilio.com/console
+const accountSid = process.env.SID; // Your Account SID from www.twilio.com/console
+const authToken = process.env.TOKEN; // Your Auth Token from www.twilio.com/console
 const s3 = new AWS.S3({
   accessKeyId: process.env.AWS_ACCESS_KEY,
   secretAccessKey: process.env.AWS_ACCESS_SECRET,
@@ -98,7 +98,7 @@ app.use("/api/verify", async (req, res) => {
     if (user) {
       console.log(user);
       const verified = await client.verify
-        .services("VA61ea528de1faaec94d6317e55fe1191a")
+        .services(process.env.CLIENT_ID)
         .verificationChecks.create({ to: mobileNumber, code })
         .then((verification_check) => verification_check.status);
       if (verified === "pending") {
